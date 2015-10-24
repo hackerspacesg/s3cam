@@ -16,7 +16,7 @@ prefix? This makes it possible to easily fetch images by day.
 
 Also for clients that do not support WebP image, a lower resolution JPEG file is uploaded to:
 
-* <https://s3-ap-southeast-1.amazonaws.com/cam.hackerspace.sg/lastfetched.jpg>
+* <https://s3-ap-southeast-1.amazonaws.com/cam.hackerspace.sg/latest.jpg>
 
 We do not archive the JPEG since it's low resolution and not as space efficient
 as the WebP format.

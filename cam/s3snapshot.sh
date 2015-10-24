@@ -17,6 +17,6 @@ fi
 if s3cmd put --storage-class=STANDARD_IA -P -m image/webp $webp $bucket/$today/$fn
 then
 	rm $webp
-	convert -resize 1024x768 /tmp/still.jpg $dir/lastfetched.jpg
-	s3cmd put -rr -P $dir/lastfetched.jpg $bucket
+	convert -resize 1024x768 /tmp/still.jpg $dir/latest.jpg
+	s3cmd put -rr --add-header="Cache-Control:max-age=3600" -P $dir/latest.jpg $bucket
 fi
