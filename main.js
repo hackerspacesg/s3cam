@@ -1,3 +1,5 @@
+var dateToday = new Date().toISOString().slice(0,10);
+
 var Slideshow = Ractive.extend({
 	template: '#template',
 
@@ -49,7 +51,6 @@ var Slideshow = Ractive.extend({
 	oninit: function ( options ) {
 
 		// Select images from today
-		var dateToday = new Date().toISOString().slice(0,10);
 		// this.s3select(dateToday);
 
 		// start with the first image
@@ -60,8 +61,8 @@ var Slideshow = Ractive.extend({
 
 var slideshow = new Slideshow({
 	el: container,
-	// Have to images: {} to stop goto func freaking
-	data: { date: "2015-07-09", images: {} }
+	// TODO: Have to images: {} to stop goto func freaking (is there something better?)
+	data: { date: dateToday, images: {} }
 });
 
 slideshow.observe('date', slideshow.s3select);
