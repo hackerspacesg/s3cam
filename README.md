@@ -25,8 +25,7 @@ as the WebP format.
 
 After trying <https://github.com/rgrp/s3-bucket-listing> & writing
 <https://github.com/kaihendry/s3listing>, I realised you can make a Web
-interface to an S3 bucket if you carefully use prefixes. The prefixes in our
-case our YYYY-MM-DD.
+interface to an S3 bucket if you carefully use prefixes.
 
 # Backup of old camera snapshots
 
@@ -35,3 +34,5 @@ Singapore region of S3 does not support
 moved to `s3://hsgcamice`, where they are stored in Glacier after 2 months.
 
 <https://s3-us-west-2.amazonaws.com/hsgcamice/>
+
+Note these epoch named files are unprefixed. I should download them and prefix them and upload them to [s3://cam.hackerspace.sg](https://s3-ap-southeast-1.amazonaws.com/cam.hackerspace.sg) for a history stretching back years.
