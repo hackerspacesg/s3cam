@@ -9,7 +9,10 @@ difficult to address the Rpi from the Internet since IPv6 doesn't exist yet.
 Now we **push** camera snapshots to Amazon S3 with a [cam.timer](cam/cam.timer) which
 [uploads](cam/s3snapshot.sh) to:
 
-	https://s3-us-west-2.amazonaws.com/hsgcamice/$(date +%Y-%m-%d)/$(date +%s).webp
+	https://s3-ap-southeast-1.amazonaws.com/cam.hackerspace.sg/$(date +%Y-%m-%d)/$(date +%s).webp
+
+Notice how `$(date +%Y-%m-%d)` aka YYYY-MM-DD directory becomes the S3 bucket
+prefix? This makes it possible to easily fetch images by day.
 
 Also for clients that do not support WebP image, a lower resolution JPEG file is uploaded to:
 

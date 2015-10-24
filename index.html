@@ -10,20 +10,26 @@
 </head>
 <body>
 
-<img width=1024 height=768 src=https://s3-ap-southeast-1.amazonaws.com/cam.hackerspace.sg/lastfetched.jpg alt="Last snapshot">
 
 <div id='container'></div>
 
 <script id='template' type='text/ractive'>
-<img src={{image.src}} />
+<picture>
+<source srcset="{{image.src}}" type="image/webp" />
+<img width=1024 height=768 src=https://s3-ap-southeast-1.amazonaws.com/cam.hackerspace.sg/lastfetched.jpg alt="Last snapshot">
+</picture>
+<div class=controls>
 <button class='prev' on-click='goto(current-1)'>&laquo;</button>
 <button class='next' on-click='goto(current+1)'>&raquo;</button>
-<p>{{image.size}} bytes image {{current+1}} of {{total}} on
+</div>
+<p>{{image.date}} ({{image.size}} bytes) image {{current+1}} of {{total}} on
 <!-- Not actually sure how to do this bind -->
 <input type=date on-click='s3select(date)' value="{{date}}"></p>
 </script>
 
 <script src=main.js></script>
+
+<p><a href=https://github.com/hackerspacesg/s3cam>MIT licensed source code</a></p>
 
 </body>
 </html>
