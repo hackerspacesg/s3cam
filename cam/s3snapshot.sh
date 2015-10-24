@@ -16,7 +16,7 @@ then
 fi
 if s3cmd put --storage-class=STANDARD_IA -P -m image/webp $webp $bucket/$today/$fn
 then
-    rm $webp
-    echo $today/$fn > $dir/latest.txt
-    s3cmd put -rr -P $dir/latest.txt $bucket/latest.txt
+	rm $webp
+	convert -resize 1024x768 /tmp/still.jpg $dir/lastfetched.jpg
+	s3cmd put -rr -P $dir/lastfetched.jpg $bucket
 fi
