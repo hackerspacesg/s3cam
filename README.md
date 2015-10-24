@@ -7,7 +7,7 @@ triggered by a URL which presents all sorts of challenges in itself since it's
 difficult to address the Rpi from the Internet since IPv6 doesn't exist yet.
 
 Now we **push** camera snapshots to Amazon S3 with a [cam.timer](cam/cam.timer) which
-uploads to:
+[uploads](cam/s3snapshot.sh) to:
 
 	https://s3-us-west-2.amazonaws.com/hsgcamice/$(date +%Y-%m-%d)/$(date +%s).webp
 

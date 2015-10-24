@@ -18,7 +18,11 @@
 <img src={{image.src}} />
 <button class='prev' on-click='goto(current-1)'>&laquo;</button>
 <button class='next' on-click='goto(current+1)'>&raquo;</button>
-<p>{{image.size}} bytes image {{current+1}} of {{total}} on   <input type=date value={{date}}></p>
+<p>{{image.size}} bytes image {{current+1}} of {{total}} on
+<!-- Not actually sure how to do this bind -->
+<input type=date on-click='s3select(date)' value="{{date}}"></p>
+<button on-click='s3select(date)'>select</button>
+<p>Date selected: {{date}}</p>
 </script>
 
 <script src=main.js></script>

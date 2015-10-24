@@ -10,7 +10,7 @@ webp=$dir/$fn
 cwebp -quiet /tmp/still.jpg -o $webp
 if test $(stat -c %s "$webp") -lt 60000
 then
-	echo "Failed, file too small (probably too dark or transfer error)"
+	echo "Failed, file too small (probably too dark)"
 	rm $webp
 	exit
 fi
