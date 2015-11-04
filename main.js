@@ -1,5 +1,3 @@
-var dateToday = new Date().toISOString().slice(0,10);
-
 var Slideshow = Ractive.extend({
 	template: '#template',
 
@@ -51,19 +49,26 @@ var Slideshow = Ractive.extend({
 	// initialisation code
 	oninit: function ( options ) {
 
-		// Select images from today
-		// this.s3select(dateToday);
-
 		// start with the first image
 		this.goto( 0 );
 	}
 });
 
+function hash() {
+	var h = window.location.hash.substr(1);
+	console.log("hash", h);
+	if (isValidDate(h)) {
+		console.log("valid date hash", h);
+		return h;
+	} else {
+		console.log("Anchor wasn't a valid date");
+		return new Date().toISOString().slice(0,10);
+	}
+}
 
 var slideshow = new Slideshow({
 	el: container,
-	// TODO: Have to images: {} to stop goto func freaking (is there something better?)
-	data: { date: dateToday, images: {} }
+	data: { date: hash(), images: {} }
 });
 
 slideshow.observe('date', slideshow.s3select);
@@ -71,15 +76,33 @@ slideshow.observe('date', slideshow.s3select);
 this.addEventListener("keydown", handleKeydown, false);
 
 function handleKeydown(e) {
-		var c = slideshow.get("current");
-		if (e.keyCode == 37) {
-			//console.log("prev", c - 1);
-			slideshow.goto(c - 1);
-		}
-		if (e.keyCode == 39) {
-			//console.log("next", c + 1);
-			slideshow.goto(c + 1);
-		}
+	var c = slideshow.get("current");
+	if (e.keyCode == 37) {
+		//console.log("prev", c - 1);
+		slideshow.goto(c - 1);
 	}
+	if (e.keyCode == 39) {
+		//console.log("next", c + 1);
+		slideshow.goto(c + 1);
+	}
+}
+
+function isValidDate(dateString) {
+	var regEx = /^\d{4}-\d{2}-\d{2}$/;
+	return dateString.match(regEx) != null;
+}
+
+window.onhashchange = function() {
+	var h = window.location.hash.substr(1);
+	console.log(h);
+	if (isValidDate(h)) {
+		slideshow.set({ date: h});
+	}
+};
+
+slideshow.observe('date', function ( newValue) {
+	console.log("new", newValue);
+	window.location.hash = newValue;
+});
 
 
