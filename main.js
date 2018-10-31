@@ -34,7 +34,12 @@ var Slideshow = Ractive.extend({
 						var src = contents[i].getElementsByTagName('Key')[0].textContent;
 						var d = new Date(src.split('/').reverse()[0].slice(0,-5)*1000);
 						var size = contents[i].getElementsByTagName('Size')[0].textContent;
-						images.push( { src: "https://s3-ap-southeast-1.amazonaws.com/cam.hackerspace.sg/" + src, date: d, size: size} );
+						var width = "1125x" // vertical resolution of iPhone X
+						var webpsrc = [];
+						var jpgsrc = [];
+						images.push(
+							{ src: "https://hsgcamimg.vc.sg/" + width + "/" + src, date: d, size: size }
+						);
 					}
 					// Newest images come first
 					that.set({ images: images.reverse() });

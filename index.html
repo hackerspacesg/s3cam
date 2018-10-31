@@ -2,10 +2,10 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link href="/style.css" rel="stylesheet">
+<link href="./style.css" rel="stylesheet">
 <title>Hackerspace.SG cam</title>
 <!-- <script src="https://cdn.jsdelivr.net/ractive/0.7.3/ractive.min.js"></script> -->
-<script src='http://cdn.ractivejs.org/latest/ractive.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/ractive/1.0.0-build-99/ractive.min.js'></script>
 <meta name=viewport content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -14,10 +14,7 @@
 <div id='container'></div>
 
 <script id='template' type='text/ractive'>
-<picture>
-<source srcset="{{image.src}}" type="image/webp" />
-<img width=1024 height=768 src=https://s3-ap-southeast-1.amazonaws.com/cam.hackerspace.sg/latest.jpg alt="Last snapshot">
-</picture>
+<img srcset="{{image.src}}" type="image/jpeg" />
 <div class=controls>
 <button class='prev' on-click='goto(current-1)'>&laquo;</button>
 <button class='next' on-click='goto(current+1)'>&raquo;</button>
